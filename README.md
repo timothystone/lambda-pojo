@@ -22,8 +22,8 @@ Running the Sample
 1. Configure your AWS security credentials in a `.aws/credentials` file in your home directory. For example:
   ```text
     [default]
-    aws_access_key_id     = &lt;your AWS access key&gt;
-    aws_secret_access_key = &lt;your AWS secret access key&gt;
+    aws_access_key_id     = <your AWS access key>
+    aws_secret_access_key = <your AWS secret access key>
   ```
   [More information on configuring `~/.aws/config`](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
 
