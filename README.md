@@ -20,11 +20,11 @@ Running the Sample
 ==================
 
 1. Configure your AWS security credentials in a `.aws/credentials` file in your home directory. For example:
-```text
-  [default]
-  aws_access_key_id     = &lt;your AWS access key&gt;
-  aws_secret_access_key = &lt;your AWS secret access key&gt;
-```
+  ```text
+    [default]
+    aws_access_key_id     = &lt;your AWS access key&gt;
+    aws_secret_access_key = &lt;your AWS secret access key&gt;
+  ```
   [More information on configuring `~/.aws/config<`](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
 
 2. Run `mvn package exec:java` to build and run the AwsSdkSample class.
