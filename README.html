@@ -1,29 +1,29 @@
-<h1>AWS SDK for Java Sample</h1>
+AWS SDK for Java Sample
+-----------------------
+
 This sample demonstrates how to make basic requests to AWS services using the AWS SDK for Java.
-<p>
+
 For lots more information on using the AWS SDK for Java, including information on high-level APIs
 and advanced features, check out the
-<a href="http://docs.aws.amazon.com/AWSSdkDocsJava/latest/DeveloperGuide/welcome.html">AWS SDK for Java Developer Guide</a>.
+[AWS SDK for Java Developer Guide](http://docs.aws.amazon.com/AWSSdkDocsJava/latest/DeveloperGuide/welcome.html).
 
-<p>
 Stay up to date with new features in the AWS SDK for Java by following the
-<a href="https://java.awsblog.com">AWS Java Developer Blog</a>.
+[AWS Java Developer Blog](https://java.awsblog.com).
 
-<h2>Prerequisites</h2>
-<ul>
-  <li>You must have a valid Amazon Web Services developer account.  If you don't have an account yet, you can
-      <a href="http://aws.amazon.com/free">get started for free</a>.</li>
-</ul>
-<h2>Running the Sample</h2>
-<ol>
-  <li>Configure your AWS security credentials in a <code>.aws/credentials</code> file in your home directory. For example:
-<pre>
+Prerequisites
+=============
+* You must have a valid Amazon Web Services developer account.  If you don't have an account yet, you can
+      [get started for free](http://aws.amazon.com/free).
+      
+Running the Sample
+==================
+
+1. Configure your AWS security credentials in a `.aws/credentials` file in your home directory. For example:
+```text
   [default]
   aws_access_key_id     = &lt;your AWS access key&gt;
   aws_secret_access_key = &lt;your AWS secret access key&gt;
-</pre>
-      <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">
-      More information on configuring <code>~/.aws/config</code></a> <br/><br/>
-  </li>
-  <li>Run <code>mvn package exec:java</code> to build and run the AwsSdkSample class. </li>
-</ol>
+```
+  [More information on configuring `~/.aws/config<`](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
+2. Run `mvn package exec:java` to build and run the AwsSdkSample class.
+
