@@ -5,6 +5,12 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 
 public class HelloPojo implements RequestHandler<RequestClass, ResponseClass>{   
 
+    /**
+     *
+     * @param request
+     * @param context
+     * @return
+     */
     @Override
     public ResponseClass handleRequest(RequestClass request, Context context){
         String greetingString = String.format("Hello, %s %s.", request.firstName, request.lastName);
