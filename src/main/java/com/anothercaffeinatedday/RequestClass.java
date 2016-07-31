@@ -29,35 +29,102 @@ package com.anothercaffeinatedday;
  */
 public class RequestClass {
 
-    int numberOfNames;
+    int numberOfNPCs;
+    boolean characteristic;
+    boolean ideal;
+    boolean bond;
+    boolean flaw;
 
     /**
      *
-     * @return
+     * @param numberOfNPCs
+     * @param characteristic
+     * @param ideal
+     * @param bond
+     * @param flaw
      */
-    public int getNumberOfNames() {
-        return numberOfNames;
-    }
-
-    /**
-     *
-     * @param numberOfNames
-     */
-    public void setNumberOfNames(int numberOfNames) {
-        this.numberOfNames = numberOfNames;
-    }
-
-    /**
-     *
-     * @param numberOfNames
-     */
-    public RequestClass(int numberOfNames) {
-        this.numberOfNames = numberOfNames;
+    public RequestClass(int numberOfNPCs, boolean characteristic, boolean ideal, boolean bond, boolean flaw) {
+        this.numberOfNPCs = numberOfNPCs;
+        this.characteristic = characteristic;
+        this.ideal = ideal;
+        this.bond = bond;
+        this.flaw = flaw;
     }
 
     /**
      *
      */
     public RequestClass() {
+    }
+    
+    /**
+     *
+     * @return the number of NPCs
+     */
+    public int getNumberOfNPCs() {
+        return numberOfNPCs;
+    }
+    /**
+     *
+     * @param numberOfNPCs
+     */
+    public void setNumberOfNPCs(int numberOfNPCs) {
+        this.numberOfNPCs = numberOfNPCs;
+    }
+
+    /**
+     * @return the characteristic
+     */
+    public boolean isCharacteristic() {
+        return characteristic;
+    }
+
+    /**
+     * @param characteristic the characteristic to set
+     */
+    public void setCharacteristic(boolean characteristic) {
+        this.characteristic = characteristic;
+    }
+
+    /**
+     * @return the ideal
+     */
+    public boolean isIdeal() {
+        return ideal;
+    }
+
+    /**
+     * @param ideal the ideal to set
+     */
+    public void setIdeal(boolean ideal) {
+        this.ideal = ideal;
+    }
+
+    /**
+     * @return the bond
+     */
+    public boolean isBond() {
+        return bond;
+    }
+
+    /**
+     * @param bond the bond to set
+     */
+    public void setBond(boolean bond) {
+        this.bond = bond;
+    }
+
+    /**
+     * @return the flaw
+     */
+    public boolean isFlaw() {
+        return flaw;
+    }
+
+    /**
+     * @param flaw the flaw to set
+     */
+    public void setFlaw(boolean flaw) {
+        this.flaw = flaw;
     }
 }

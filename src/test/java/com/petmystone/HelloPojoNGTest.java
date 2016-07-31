@@ -5,7 +5,7 @@
  */
 package com.petmystone;
 
-import com.anothercaffeinatedday.HelloPojo;
+import com.anothercaffeinatedday.NpcGenerator;
 import com.anothercaffeinatedday.RequestClass;
 import com.anothercaffeinatedday.ResponseClass;
 import com.amazonaws.services.lambda.runtime.Context;
@@ -37,14 +37,14 @@ public class HelloPojoNGTest {
     }
 
     /**
-     * Test of handleRequest method, of class HelloPojo.
+     * Test of handleRequest method, of class NpcGenerator.
      */
     @org.testng.annotations.Test
     public void testHandleRequest() {
         System.out.println("handleRequest");
         RequestClass request = null;
         Context context = null;
-        HelloPojo instance = new HelloPojo();
+        NpcGenerator instance = new NpcGenerator();
         ResponseClass expResult = null;
         ResponseClass result = instance.handleRequest(request, context);
         assertEquals(result, expResult);

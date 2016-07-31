@@ -36,7 +36,7 @@ import java.util.List;
  * 
  * @author tstone
  */
-public class HelloPojo implements RequestHandler<RequestClass, ResponseClass>{  
+public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>{  
     
     /**
      * 
@@ -77,10 +77,10 @@ public class HelloPojo implements RequestHandler<RequestClass, ResponseClass>{
     @Override
     public ResponseClass handleRequest(RequestClass request, Context context){            
         List<String> names = new ArrayList<>();
-        for (int i = 0; i < request.numberOfNames; i++) {
+        for (int i = 0; i < request.numberOfNPCs; i++) {
             StringBuffer name = new StringBuffer();
             name.append(NAME_PART_ONE[rollD20()]).append(NAME_PART_TWO[rollD20()]).append(NAME_PART_THREE[rollD20()]);
-            names.add(uppercaseFirstLetter(name));
+            names.add(properNameFormatter(name));
         }
         return new ResponseClass(names);
     }
@@ -88,7 +88,7 @@ public class HelloPojo implements RequestHandler<RequestClass, ResponseClass>{
     /**
      * A simple PRNG from {@link java.lang.Math} to generate a random numbur between 0-19.
      * The resulting value is used to {@link #handleRequest} to select an indexed 
-     * result from the one of three parts of a name.
+     * result.
      * 
      * @return int an index between 0-19.
      */
@@ -97,13 +97,34 @@ public class HelloPojo implements RequestHandler<RequestClass, ResponseClass>{
     }
     
     /**
+     * A simple PRNG from {@link java.lang.Math} to generate a random numbur between 0-12.
+     * The resulting value is used to {@link #handleRequest} to select an indexed 
+     * result.
+     * 
+     * @return int an index between 0-12.
+     */
+    private int rollD12() {
+        return (int) (Math.random() * 12);
+    }
+
+    /**
+     * A simple PRNG from {@link java.lang.Math} to generate a random numbur between 0-10.
+     * The resulting value is used to {@link #handleRequest} to select an indexed 
+     * result.
+     * 
+     * @return int an index between 0-10.
+     */
+    private int rollD10() {
+        return (int) (Math.random() * 10);
+    }
+    /**
      * A utility function that properly UPPERCASEs the first letter of the provided name.
      * When {@link #handleRequest} selects an empty index, the proper name should be properly capitalized.
      * 
      * @param name StringBuffer 
      * @return String the correct case form for proper names.
      */
-     private String uppercaseFirstLetter(StringBuffer name) {
+     private String properNameFormatter(StringBuffer name) {
         return name.toString().substring(0, 1).toUpperCase() + name.toString().substring(1);
     }
 }

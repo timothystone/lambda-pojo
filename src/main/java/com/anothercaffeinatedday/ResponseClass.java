@@ -31,30 +31,30 @@ import java.util.List;
  */
 public class ResponseClass {
 
-        List names;
+        List NPCs;
 
     /**
-     * Get the names generated.
-     * @return List names generated
+     * Get the NPCs generated.
+     * @return List NPCs generated
      */
-    public List getNames() {
-            return this.names;
+    public List getNPCs() {
+            return this.NPCs;
         }
 
     /**
-     * Sets the {@link java.util.List} of generated names
-     * @param names
+     * Sets the {@link java.util.List} of generated NPCs
+     * @param NPCs
      */
-    public void setNames(List names) {
-            this.names = names;
+    public void setNPCs(List NPCs) {
+            this.NPCs = NPCs;
         }
 
     /**
-     * Makes a new response with a list of names.
+     * Makes a new response with a list of NPCs.
      * @param names
      */
     public ResponseClass(List names) {
-            this.names = names;
+            this.NPCs = names;
         }
 
     /**
