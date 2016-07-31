@@ -11,29 +11,20 @@ package com.petmystone;
  */
 public class RequestClass {
 
-        String firstName;
-        String lastName;
+    int numberOfNames;
 
-        public String getFirstName() {
-            return firstName;
-        }
+    public int getNumberOfNames() {
+        return numberOfNames;
+    }
 
-        public void setFirstName(String firstName) {
-            this.firstName = firstName;
-        }
+    public void setNumberOfNames(int numberOfNames) {
+        this.numberOfNames = numberOfNames;
+    }
 
-        public String getLastName() {
-            return lastName;
-        }
+    public RequestClass(int numberOfNames) {
+        this.numberOfNames = numberOfNames;
+    }
 
-        public void setLastName(String lastName) {
-            this.lastName = lastName;
-        }
-
-        public RequestClass(String firstName, String lastName) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-        }
-
-        public RequestClass() {}    
+    public RequestClass() {
+    }
 }

@@ -5,24 +5,25 @@
  */
 package com.petmystone;
 
+import java.util.List;
 /**
  *
  * @author tstone
  */
 public class ResponseClass {
 
-        String greetings;
+        List names;
 
-        public String getGreetings() {
-            return greetings;
+        public List getNames() {
+            return names;
         }
 
-        public void setGreetings(String greetings) {
-            this.greetings = greetings;
+        public void setGreetings(List names) {
+            this.names = names;
         }
 
-        public ResponseClass(String greetings) {
-            this.greetings = greetings;
+        public ResponseClass(List names) {
+            this.names = names;
         }
 
         public ResponseClass() {}
