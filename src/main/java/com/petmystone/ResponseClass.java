@@ -14,18 +14,33 @@ public class ResponseClass {
 
         List names;
 
-        public List getNames() {
-            return names;
+    /**
+     * Get the names generated.
+     * @return List names generated
+     */
+    public List getNames() {
+            return this.names;
         }
 
-        public void setGreetings(List names) {
+    /**
+     * Sets the {@link java.util.List} of generated names
+     * @param names
+     */
+    public void setNames(List names) {
             this.names = names;
         }
 
-        public ResponseClass(List names) {
+    /**
+     * Makes a new response with a list of names.
+     * @param names
+     */
+    public ResponseClass(List names) {
             this.names = names;
         }
 
-        public ResponseClass() {}
+    /**
+     * Default Constructor
+     */
+    public ResponseClass() {}
     
 }
