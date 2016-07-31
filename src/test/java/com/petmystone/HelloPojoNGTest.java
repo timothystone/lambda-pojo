@@ -5,6 +5,9 @@
  */
 package com.petmystone;
 
+import com.anothercaffeinatedday.HelloPojo;
+import com.anothercaffeinatedday.RequestClass;
+import com.anothercaffeinatedday.ResponseClass;
 import com.amazonaws.services.lambda.runtime.Context;
 import static org.testng.Assert.*;
 
