@@ -23,84 +23,184 @@
  */
 package com.anothercaffeinatedday;
 
-import com.amazonaws.services.lambda.runtime.Context; 
+import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple API call that returns a fantasy like name, or set of names.
- * Based on the Name Generator found in the D&D 5th Edition Dungeon Master's Screen.
- * 
+ * A simple API call that returns a fantasy like name, or set of names. Based on
+ * the Name Generator found in the D&D 5th Edition Dungeon Master's Screen.
+ *
  * Names are constructed from three (3) parts.
- * 
+ *
  * @author tstone
  */
-public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>{  
-    
-    /**
-     * 
-     */
-    public static final String[] NAME_PART_ONE = {
-        ""  ,""  ,""  ,""  ,"A",
-        "Be","De","El","Fa","Jo",
-        "Ki","La","Ma","Na","O",
-        "Pa","Re","Si","Ta","Va"
-    };
-    
+public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass> {
+
     /**
      *
      */
-    public static final String[] NAME_PART_TWO =  {
-        "bar" ,"ched","dell","far" ,"gran",
-        "hal" ,"jen" ,"kel" ,"lim" ,"mor",
-        "net" ,"penn","quil","rond","sark",
-        "shen","tur" ,"vash","yor" ,"zen"
-    };
-    
+    private static final String ROLL_TWICE = "ROLL_TWICE";
+
     /**
      *
      */
-    public static final String[] NAME_PART_THREE =  {
-        ""  ,"a"  ,"ac"  ,"ai"  ,"al",
-        "am","an","ar","ea","el",
-        "er","ess","ett","ic","id",
-        "il","in","is","or","us"
+    private static final String[] NAME_PART_ONE = {
+        "", "", "", "", "A",
+        "Be", "De", "El", "Fa", "Jo",
+        "Ki", "La", "Ma", "Na", "O",
+        "Pa", "Re", "Si", "Ta", "Va"
     };
 
     /**
-     * 
+     *
+     */
+    private static final String[] NAME_PART_TWO = {
+        "bar", "ched", "dell", "far", "gran",
+        "hal", "jen", "kel", "lim", "mor",
+        "net", "penn", "quil", "rond", "sark",
+        "shen", "tur", "vash", "yor", "zen"
+    };
+
+    /**
+     *
+     */
+    private static final String[] NAME_PART_THREE = {
+        "", "a", "ac", "ai", "al",
+        "am", "an", "ar", "ea", "el",
+        "er", "ess", "ett", "ic", "id",
+        "il", "in", "is", "or", "us"
+    };
+
+    private static final String[] BONDS = {
+        "Personal goal or achievement",
+        "Family members",
+        "Colleagues or compatriots",
+        "Benefactor, patron, or employer",
+        "Romantic interest",
+        "Special place",
+        "Keepsake",
+        "Valuable possession",
+        "Revenge",
+        ROLL_TWICE
+    };
+    private static final String[] CHARACTERISTICS = {
+        "Absentminded",
+        "Arrogant",
+        "Boorish",
+        "Chews something",
+        "Clumsy",
+        "Curious",
+        "Dim-witted",
+        "Fiddles and fidgets nervously",
+        "Frequently uses the wrong word",
+        "Friendly",
+        "Irritable",
+        "Prone to predictions of certain doom",
+        "Pronounced scar",
+        "Slurs words, lisps, or stutters",
+        "Speak laudly or whispers",
+        "Squints",
+        "Stares into the distance",
+        "Suspicious",
+        "Uses colorful oaths and exclamations",
+        "Uses flowery speech or long words"
+    };
+    private static final String[] FLAWS = {
+        "Forbidden love or romantic susceptibility",
+        "Decadence",
+        "Arrogance",
+        "Envy of another person's possessions or station",
+        "Overpowering greed",
+        "Prone to rage",
+        "Powerful Enemy",
+        "Specific phobia",
+        "Shameful or scandalous history",
+        "Secret crime or misdeed",
+        "Possession of forbidden lore",
+        "Foolhardy bravery"
+    };
+
+    private static final String[] IDEALS = {
+        "Aspiration (any)",
+        "Charity (good)",
+        "Community (lawful)",
+        "Creativity (chaotic)",
+        "Discovery (any)",
+        "Fairness (lawful)",
+        "Freedom (chaotic)",
+        "Glory (any)",
+        "Greater good (good)",
+        "Greedy (evil)",
+        "Honor (lawful)",
+        "Independence (chaotic)",
+        "Knowledge (neutral)",
+        "Life (good)",
+        "Live and let live (chaotic)",
+        "Might (evil)",
+        "Nation (any)",
+        "People (neutral)",
+        "Power (evil)",
+        "Redemption (any)"
+    };
+
+    /**
+     *
      * @param request RequestClass provided by AWS
      * @param context Context provided by AWS
      * @return ResponseClass
      */
     @Override
-    public ResponseClass handleRequest(RequestClass request, Context context){            
-        List<String> names = new ArrayList<>();
+    public ResponseClass handleRequest(RequestClass request, Context context) {
+        List<NPC> NPCs = new ArrayList<>();
         for (int i = 0; i < request.numberOfNPCs; i++) {
+            NPC npc = new NPC();
             StringBuffer name = new StringBuffer();
             name.append(NAME_PART_ONE[rollD20()]).append(NAME_PART_TWO[rollD20()]).append(NAME_PART_THREE[rollD20()]);
-            names.add(properNameFormatter(name));
+            npc.setName(properNameFormatter(name));
+            if (request.bond) {
+                int index = rollD10();
+                String bond = BONDS[index];
+                List<String> bonds = new ArrayList<>();
+                if (ROLL_TWICE.equals(bond)) {
+                    bonds.addAll(getTwoBonds());
+                } else {
+                    bonds.add(bond);
+                }
+                npc.setBonds(bonds);
+            }
+            
+            if (request.characteristic) {
+                npc.setCharacteristic(CHARACTERISTICS[rollD20()]);
+            }
+            if (request.flaw) {
+                npc.setFlaw(FLAWS[rollD12()]);
+            }
+            if (request.ideal) {
+                npc.setIdeal(IDEALS[rollD20()]);
+            }
+            NPCs.add(npc);
         }
-        return new ResponseClass(names);
+        return new ResponseClass(NPCs);
     }
 
     /**
-     * A simple PRNG from {@link java.lang.Math} to generate a random numbur between 0-19.
-     * The resulting value is used to {@link #handleRequest} to select an indexed 
-     * result.
-     * 
+     * A simple PRNG from {@link java.lang.Math} to generate a random numbur
+     * between 0-19. The resulting value is used to {@link #handleRequest} to
+     * select an indexed result.
+     *
      * @return int an index between 0-19.
      */
     private int rollD20() {
         return (int) (Math.random() * 20);
     }
-    
+
     /**
-     * A simple PRNG from {@link java.lang.Math} to generate a random numbur between 0-12.
-     * The resulting value is used to {@link #handleRequest} to select an indexed 
-     * result.
-     * 
+     * A simple PRNG from {@link java.lang.Math} to generate a random numbur
+     * between 0-12. The resulting value is used to {@link #handleRequest} to
+     * select an indexed result.
+     *
      * @return int an index between 0-12.
      */
     private int rollD12() {
@@ -108,23 +208,48 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
     }
 
     /**
-     * A simple PRNG from {@link java.lang.Math} to generate a random numbur between 0-10.
-     * The resulting value is used to {@link #handleRequest} to select an indexed 
-     * result.
-     * 
+     * A simple PRNG from {@link java.lang.Math} to generate a random numbur
+     * between 0-10. The resulting value is used to {@link #handleRequest} to
+     * select an indexed result.
+     *
      * @return int an index between 0-10.
      */
     private int rollD10() {
         return (int) (Math.random() * 10);
     }
+
     /**
-     * A utility function that properly UPPERCASEs the first letter of the provided name.
-     * When {@link #handleRequest} selects an empty index, the proper name should be properly capitalized.
-     * 
-     * @param name StringBuffer 
+     * A simple PRNG from {@link java.lang.Math} to generate a random numbur
+     * between 0-10. The resulting value is used to {@link #handleRequest} to
+     * select an indexed result.
+     *
+     * @return List a set of bonds.
+     */
+    private List getTwoBonds() {
+        List<String> bonds = new ArrayList<>();
+        int firstBond = (int) (Math.random() * 9);
+        bonds.add(BONDS[firstBond]);
+        int secondBond = (int) (Math.random() * 9);
+        while (secondBond != firstBond) {
+            bonds.add(BONDS[secondBond]);
+            if(bonds.size() == 2) {
+                break;
+            }
+            secondBond = (int) (Math.random() * 9);
+        }
+        return bonds;
+    }
+
+    /**
+     * A utility function that properly UPPERCASEs the first letter of the
+     * provided name. When {@link #handleRequest} selects an empty index, the
+     * proper name should be properly capitalized.
+     *
+     * @param name StringBuffer
      * @return String the correct case form for proper names.
      */
-     private String properNameFormatter(StringBuffer name) {
+    private String properNameFormatter(StringBuffer name) {
         return name.toString().substring(0, 1).toUpperCase() + name.toString().substring(1);
     }
+
 }
