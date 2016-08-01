@@ -37,11 +37,11 @@ public class RequestClass {
 
     /**
      *
-     * @param numberOfNPCs
-     * @param characteristic
-     * @param ideal
-     * @param bond
-     * @param flaw
+     * @param numberOfNPCs the number of NPCs to be generated
+     * @param characteristic the prominent characteristic of the NPC
+     * @param ideal the"world outlook" and Alignment of the NPC
+     * @param bond a possession, person, or place important to the NPC
+     * @param flaw a vice or other undesirable behavior of the NPC
      */
     public RequestClass(int numberOfNPCs, boolean characteristic, boolean ideal, boolean bond, boolean flaw) {
         this.numberOfNPCs = numberOfNPCs;
@@ -66,7 +66,7 @@ public class RequestClass {
     }
     /**
      *
-     * @param numberOfNPCs
+     * @param numberOfNPCs the number of NPCs to generate
      */
     public void setNumberOfNPCs(int numberOfNPCs) {
         this.numberOfNPCs = numberOfNPCs;

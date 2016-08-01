@@ -29,22 +29,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple API call that returns a fantasy like name, or set of names. Based on
- * the Name Generator found in the D&D 5th Edition Dungeon Master's Screen.
+ * A simple API call that returns fantasy Non-Player Characters (NPCs). Based on
+ * the Name Generator found in the D&amp;D 5th Edition Dungeon Master's Screen.
  *
- * Names are constructed from three (3) parts.
- *
+ * Names are constructed from three (3) parts, rolling a d20 three (3) times.
+ * 
  * @author tstone
  */
 public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass> {
 
     /**
-     *
+     * Whether two rolls should be made against a table.
      */
     private static final String ROLL_TWICE = "ROLL_TWICE";
 
     /**
-     *
+     * First part of name.
+     * The first four (4) indexes are empty. This creates a shorter name, however
+     * complicates generating two (2) part names as the second part table is not 
+     * capitalized. A supporting {@link #properNameFormatter(java.lang.StringBuffer)} method
+     * is provided to correct this problem.
      */
     private static final String[] NAME_PART_ONE = {
         "", "", "", "", "A",
@@ -54,7 +58,9 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
     };
 
     /**
-     *
+     * Second part of name.
+     * @see #NAME_PART_ONE
+     * @see #properNameFormatter(java.lang.StringBuffer)
      */
     private static final String[] NAME_PART_TWO = {
         "bar", "ched", "dell", "far", "gran",
@@ -64,7 +70,7 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
     };
 
     /**
-     *
+     * Second part of name.
      */
     private static final String[] NAME_PART_THREE = {
         "", "a", "ac", "ai", "al",
@@ -85,6 +91,7 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
         "Revenge",
         ROLL_TWICE
     };
+    
     private static final String[] CHARACTERISTICS = {
         "Absentminded",
         "Arrogant",
@@ -107,6 +114,7 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
         "Uses colorful oaths and exclamations",
         "Uses flowery speech or long words"
     };
+    
     private static final String[] FLAWS = {
         "Forbidden love or romantic susceptibility",
         "Decadence",
@@ -146,7 +154,7 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
     };
 
     /**
-     *
+     * 
      * @param request RequestClass provided by AWS
      * @param context Context provided by AWS
      * @return ResponseClass
@@ -219,9 +227,7 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
     }
 
     /**
-     * A simple PRNG from {@link java.lang.Math} to generate a random numbur
-     * between 0-10. The resulting value is used to {@link #handleRequest} to
-     * select an indexed result.
+     * A utility method to generate two bonds when the asked to roll twice on the table.
      *
      * @return List a set of bonds.
      */

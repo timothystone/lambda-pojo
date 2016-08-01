@@ -31,35 +31,39 @@ import java.util.List;
  */
 public class ResponseClass {
 
-        List NPCs;
+    List NPCs;
 
     /**
      * Get the NPCs generated.
+     *
      * @return List NPCs generated
      */
     public List getNPCs() {
-            return this.NPCs;
-        }
+        return this.NPCs;
+    }
 
     /**
      * Sets the {@link java.util.List} of generated NPCs
-     * @param NPCs
+     *
+     * @param NPCs the NPCs generated from the request
      */
     public void setNPCs(List NPCs) {
-            this.NPCs = NPCs;
-        }
+        this.NPCs = NPCs;
+    }
 
     /**
      * Makes a new response with a list of NPCs.
-     * @param names
+     *
+     * @param NPCs the list of NPCs for the response
      */
-    public ResponseClass(List names) {
-            this.NPCs = names;
-        }
+    public ResponseClass(List NPCs) {
+        this.NPCs = NPCs;
+    }
 
     /**
      * Default Constructor
      */
-    public ResponseClass() {}
-    
+    public ResponseClass() {
+    }
+
 }
