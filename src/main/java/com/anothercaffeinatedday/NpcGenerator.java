@@ -24,7 +24,9 @@
 package com.anothercaffeinatedday;
 
 import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -161,6 +163,7 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
      */
     @Override
     public ResponseClass handleRequest(RequestClass request, Context context) {
+        LambdaLogger logger = context.getLogger();
         List<NPC> NPCs = new ArrayList<>();
         for (int i = 0; i < request.numberOfNPCs; i++) {
             NPC npc = new NPC();
@@ -190,6 +193,7 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
             }
             NPCs.add(npc);
         }
+        logger.log(MessageFormat.format("Generated {0} {1} {2}", NPCs.size(), (NPCs.size() == 1) ? "NPC:\n" : "NPCs:\n", NPCs.toString()));
         return new ResponseClass(NPCs);
     }
 

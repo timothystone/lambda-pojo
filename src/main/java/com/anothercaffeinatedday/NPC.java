@@ -23,6 +23,8 @@
  */
 package com.anothercaffeinatedday;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 
 /**
@@ -30,7 +32,7 @@ import java.util.List;
  * @author tstone
  */
 public class NPC {
-    
+
     private String name;
     private List bonds;
     private String characteristic;
@@ -106,5 +108,17 @@ public class NPC {
     public void setFlaw(String flaw) {
         this.flaw = flaw;
     }
-    
+
+    /**
+     * @return a JSON version of the NPC
+     */
+    @Override
+    public String toString() {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.writeValueAsString(this);
+        } catch (JsonProcessingException ex) {
+            throw new RuntimeException("Failed to create JSON representation of NPC.");
+        }
+    }
 }
