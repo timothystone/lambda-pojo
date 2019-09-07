@@ -28,10 +28,7 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * A simple API call that returns fantasy Non-Player Characters (NPCs). Based on
@@ -47,7 +44,7 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
      * A possible set of photo assets
      * This is a static set of photo assets for generic use in the response.
      */
-    private static final String[] IMAGES = {"photo_1", "photo_2", "photo_3", "photo_4"};
+    private static final String[] IMAGES = {"assets/photo_1.jpg", "assets/photo_2.jpg", "assets/photo_3.jpg", "assets/photo_4.jpg"};
 
     /**
      * Whether two rolls should be made against a table.
@@ -177,7 +174,7 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
         List<String> photos = Arrays.asList(IMAGES);
         for (int i = 0; i < request.numberOfNPCs; i++) {
             NPC npc = new NPC();
-            Collections.shuffle(photos);
+            Collections.shuffle(photos, new Random(32));
             npc.setPhotos(photos);
             StringBuffer name = new StringBuffer();
             name.append(NAME_PART_ONE[rollD20()]).append(NAME_PART_TWO[rollD20()]).append(NAME_PART_THREE[rollD20()]);
