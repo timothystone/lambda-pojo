@@ -25,6 +25,7 @@ package com.anothercaffeinatedday;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.List;
 
 /**
@@ -33,11 +34,26 @@ import java.util.List;
  */
 public class NPC {
 
+    private List<String> photos;
     private String name;
     private List bonds;
     private String characteristic;
     private String ideal;
     private String flaw;
+
+    /**
+     * @return the photos
+     */
+    public List<String> getPhotos() {
+        return photos;
+    }
+
+    /**
+     * @param photos the photos to set
+     */
+    public void setPhotos(List<String> photos) {
+        this.photos = photos;
+    }
 
     /**
      * @return the name
