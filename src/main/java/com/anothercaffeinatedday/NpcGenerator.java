@@ -44,7 +44,7 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
      * A possible set of photo assets
      * This is a static set of photo assets for generic use in the response.
      */
-    private static final String[] IMAGES = {"assets/photo_1.jpg", "assets/photo_2.jpg", "assets/photo_3.jpg", "assets/photo_4.jpg"};
+    private static final String[] IMAGES = {"photo_1.jpg", "photo_2.jpg", "photo_3.jpg", "photo_4.jpg"};
 
     /**
      * Whether two rolls should be made against a table.
@@ -174,7 +174,7 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
         List<String> photos = Arrays.asList(IMAGES);
         for (int i = 0; i < request.numberOfNPCs; i++) {
             NPC npc = new NPC();
-            Collections.shuffle(photos, new Random(32));
+            Collections.shuffle(photos, new Random(System.currentTimeMillis()));
             npc.setPhotos(photos);
             StringBuffer name = new StringBuffer();
             name.append(NAME_PART_ONE[rollD20()]).append(NAME_PART_TWO[rollD20()]).append(NAME_PART_THREE[rollD20()]);
