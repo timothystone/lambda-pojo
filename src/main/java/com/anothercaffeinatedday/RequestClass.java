@@ -1,4 +1,4 @@
-/* 
+/*
  * The MIT License
  *
  * Copyright 2016 tstone.
@@ -24,107 +24,104 @@
 package com.anothercaffeinatedday;
 
 /**
- *
  * @author tstone
  */
 public class RequestClass {
 
-    int numberOfNPCs;
-    boolean characteristic;
-    boolean ideal;
-    boolean bond;
-    boolean flaw;
+  int numberOfNPCs;
+  boolean characteristic;
+  boolean ideal;
+  boolean bond;
+  boolean flaw;
 
-    /**
-     *
-     * @param numberOfNPCs the number of NPCs to be generated
-     * @param characteristic the prominent characteristic of the NPC
-     * @param ideal the"world outlook" and Alignment of the NPC
-     * @param bond a possession, person, or place important to the NPC
-     * @param flaw a vice or other undesirable behavior of the NPC
-     */
-    public RequestClass(int numberOfNPCs, boolean characteristic, boolean ideal, boolean bond, boolean flaw) {
-        this.numberOfNPCs = numberOfNPCs;
-        this.characteristic = characteristic;
-        this.ideal = ideal;
-        this.bond = bond;
-        this.flaw = flaw;
-    }
+  /**
+   * @param numberOfNPCs   the number of NPCs to be generated
+   * @param characteristic the prominent characteristic of the NPC
+   * @param ideal          the"world outlook" and Alignment of the NPC
+   * @param bond           a possession, person, or place important to the NPC
+   * @param flaw           a vice or other undesirable behavior of the NPC
+   */
+  public RequestClass(int numberOfNPCs, boolean characteristic, boolean ideal, boolean bond, boolean flaw) {
+    this.numberOfNPCs = numberOfNPCs;
+    this.characteristic = characteristic;
+    this.ideal = ideal;
+    this.bond = bond;
+    this.flaw = flaw;
+  }
 
-    /**
-     *
-     */
-    public RequestClass() {
-    }
-    
-    /**
-     *
-     * @return the number of NPCs
-     */
-    public int getNumberOfNPCs() {
-        return numberOfNPCs;
-    }
-    /**
-     *
-     * @param numberOfNPCs the number of NPCs to generate
-     */
-    public void setNumberOfNPCs(int numberOfNPCs) {
-        this.numberOfNPCs = numberOfNPCs;
-    }
+  /**
+   * Default constructor.
+   */
+  public RequestClass() {
+  }
 
-    /**
-     * @return the characteristic
-     */
-    public boolean isCharacteristic() {
-        return characteristic;
-    }
+  /**
+   * @return the number of NPCs
+   */
+  public int getNumberOfNPCs() {
+    return numberOfNPCs;
+  }
 
-    /**
-     * @param characteristic the characteristic to set
-     */
-    public void setCharacteristic(boolean characteristic) {
-        this.characteristic = characteristic;
-    }
+  /**
+   * @param numberOfNPCs the number of NPCs to generate
+   */
+  public void setNumberOfNPCs(int numberOfNPCs) {
+    this.numberOfNPCs = numberOfNPCs;
+  }
 
-    /**
-     * @return the ideal
-     */
-    public boolean isIdeal() {
-        return ideal;
-    }
+  /**
+   * @return the characteristic
+   */
+  public boolean isCharacteristic() {
+    return characteristic;
+  }
 
-    /**
-     * @param ideal the ideal to set
-     */
-    public void setIdeal(boolean ideal) {
-        this.ideal = ideal;
-    }
+  /**
+   * @param characteristic the characteristic to set
+   */
+  public void setCharacteristic(boolean characteristic) {
+    this.characteristic = characteristic;
+  }
 
-    /**
-     * @return the bond
-     */
-    public boolean isBond() {
-        return bond;
-    }
+  /**
+   * @return the ideal
+   */
+  public boolean isIdeal() {
+    return ideal;
+  }
 
-    /**
-     * @param bond the bond to set
-     */
-    public void setBond(boolean bond) {
-        this.bond = bond;
-    }
+  /**
+   * @param ideal the ideal to set
+   */
+  public void setIdeal(boolean ideal) {
+    this.ideal = ideal;
+  }
 
-    /**
-     * @return the flaw
-     */
-    public boolean isFlaw() {
-        return flaw;
-    }
+  /**
+   * @return the bond
+   */
+  public boolean isBond() {
+    return bond;
+  }
 
-    /**
-     * @param flaw the flaw to set
-     */
-    public void setFlaw(boolean flaw) {
-        this.flaw = flaw;
-    }
+  /**
+   * @param bond the bond to set
+   */
+  public void setBond(boolean bond) {
+    this.bond = bond;
+  }
+
+  /**
+   * @return the flaw
+   */
+  public boolean isFlaw() {
+    return flaw;
+  }
+
+  /**
+   * @param flaw the flaw to set
+   */
+  public void setFlaw(boolean flaw) {
+    this.flaw = flaw;
+  }
 }
