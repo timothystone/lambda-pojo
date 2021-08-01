@@ -1,0 +1,108 @@
+openapi: "3.0.2"
+info:
+  title: NPC Generator
+  version: "1.0.0"
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  description: |
+    An API for generating a random Non-Player Character (NPC) for the "world's most popular Role Playing Game."
+  contact:
+    name: Timothy Stone
+    url: https://www.anothercaffeinatedday.com
+    email: javafueled@gmail.com
+servers:
+  - url: https://gvk9jsvdt5.execute-api.us-east-1.amazonaws.com/prod
+paths:
+  /npcs:
+    parameters:
+      - $ref: '#/components/parameters/NumberOfNpcs'
+      - $ref: '#/components/parameters/Bond'
+      - $ref: '#/components/parameters/Flaw'
+      - $ref: '#/components/parameters/Characteristic'
+      - $ref: '#/components/parameters/Ideal'
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/NPC'
+components:
+  parameters:
+    NumberOfNpcs:
+      name: numberOfNPCs
+      in: query
+      description: The number of NPCs to generate
+      required: true
+      schema:
+        type: number
+        example: 5
+    Bond:
+      name: bond
+      in: query
+      description: Generate a set of bonds for the NPC.
+      schema:
+        type: boolean
+      example: true
+    Ideal:
+      name: ideal
+      in: query
+      description: Generate an ideal for the NPC.
+      schema:
+        type: boolean
+      example: true
+    Characteristic:
+      name: characteristic
+      in: query
+      description: Generate a characteristic of the NPC.
+      schema:
+        type: boolean
+      example: true
+    Flaw:
+      name: flaw
+      in: query
+      description: Generate a flaw of the NPC.
+      schema:
+        type: boolean
+      example: true
+  schemas:
+    NPC:
+      type: object
+      properties:
+        type:
+          type: string
+          example: npcs
+        id:
+          type: string
+          format: uuid
+          example: D058D23F-03AA-414F-BC0C-C3869D7C2C63
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
+              example: Sivasha
+            bonds:
+              type: array
+              items:
+                type: string
+              example:
+              - Colleagues or compatriots
+            characteristic:
+              type: string
+              example: Slurs words, lisps, or stutters
+            ideal:
+              type: string
+              example: Greater good (good)
+            flaw:
+              type: string
+              example: Specific phobia
+            photos:
+              type: array
+              items:
+                type: string
+              example:
+              - photo_1.jpg
+              - photo_2.jpg

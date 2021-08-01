@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2016 tstone.
+ * Copyright © 2016-2021 Timothy Stone.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,102 +26,38 @@ package com.anothercaffeinatedday;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
+import java.util.UUID;
 
 /**
- * @author tstone
+ * @author Timothy Stone
  */
 public class NPC {
 
-  private List<String> photos;
-  private String name;
-  private List bonds;
-  private String characteristic;
-  private String ideal;
-  private String flaw;
+  private final String type;
+  private final UUID id;
+  private NpcAttributes attributes;
 
-  /**
-   * @return the photos
-   */
-  public List<String> getPhotos() {
-    return photos;
+  public NPC() {
+    this.type = "npcs";
+    this.id = UUID.randomUUID();
   }
 
-  /**
-   * @param photos the photos to set
-   */
-  public void setPhotos(List<String> photos) {
-    this.photos = photos;
+  public String getType() {
+    return type;
   }
 
-  /**
-   * @return the name
-   */
-  public String getName() {
-    return name;
+  public UUID getId() {
+    return id;
   }
 
-  /**
-   * @param name the name to set
-   */
-  public void setName(String name) {
-    this.name = name;
+  public NpcAttributes getAttributes() {
+    return attributes;
   }
 
-  /**
-   * @return the bonds
-   */
-  public List getBonds() {
-    return bonds;
+  public void setAttributes(NpcAttributes attributes) {
+    this.attributes = attributes;
   }
 
-  /**
-   * @param bonds the bond to set
-   */
-  public void setBonds(List bonds) {
-    this.bonds = bonds;
-  }
-
-  /**
-   * @return the characteristic
-   */
-  public String getCharacteristic() {
-    return characteristic;
-  }
-
-  /**
-   * @param characteristic the characteristic to set
-   */
-  public void setCharacteristic(String characteristic) {
-    this.characteristic = characteristic;
-  }
-
-  /**
-   * @return the ideal
-   */
-  public String getIdeal() {
-    return ideal;
-  }
-
-  /**
-   * @param ideal the ideal to set
-   */
-  public void setIdeal(String ideal) {
-    this.ideal = ideal;
-  }
-
-  /**
-   * @return the flaw
-   */
-  public String getFlaw() {
-    return flaw;
-  }
-
-  /**
-   * @param flaw the flaw to set
-   */
-  public void setFlaw(String flaw) {
-    this.flaw = flaw;
-  }
 
   /**
    * @return a JSON version of the NPC
@@ -133,6 +69,100 @@ public class NPC {
       return mapper.writeValueAsString(this);
     } catch (JsonProcessingException ex) {
       throw new RuntimeException("Failed to create JSON representation of NPC.");
+    }
+  }
+
+  class NpcAttributes {
+
+    private String name;
+    private List<String> photos;
+    private List<String> bonds;
+    private String characteristic;
+    private String ideal;
+    private String flaw;
+
+    /**
+     * @return the photos
+     */
+    public List<String> getPhotos() {
+      return photos;
+    }
+
+    /**
+     * @param photos the photos to set
+     */
+    public void setPhotos(List<String> photos) {
+      this.photos = photos;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+      return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+      this.name = name;
+    }
+
+    /**
+     * @return the bonds
+     */
+    public List<String> getBonds() {
+      return bonds;
+    }
+
+    /**
+     * @param bonds the bond to set
+     */
+    public void setBonds(List<String> bonds) {
+      this.bonds = bonds;
+    }
+
+    /**
+     * @return the characteristic
+     */
+    public String getCharacteristic() {
+      return characteristic;
+    }
+
+    /**
+     * @param characteristic the characteristic to set
+     */
+    public void setCharacteristic(String characteristic) {
+      this.characteristic = characteristic;
+    }
+
+    /**
+     * @return the ideal
+     */
+    public String getIdeal() {
+      return ideal;
+    }
+
+    /**
+     * @param ideal the ideal to set
+     */
+    public void setIdeal(String ideal) {
+      this.ideal = ideal;
+    }
+
+    /**
+     * @return the flaw
+     */
+    public String getFlaw() {
+      return flaw;
+    }
+
+    /**
+     * @param flaw the flaw to set
+     */
+    public void setFlaw(String flaw) {
+      this.flaw = flaw;
     }
   }
 }

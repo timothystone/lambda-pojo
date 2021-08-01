@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2016 tstone.
+ * Copyright © 2016-2021 Timothy Stone.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ *
  */
 package com.anothercaffeinatedday;
 
@@ -39,7 +40,7 @@ import java.util.Random;
  * <p>
  * Names are constructed from three (3) parts, rolling a d20 three (3) times.
  *
- * @author tstone
+ * @author Timothy Stone
  */
 public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass> {
 
@@ -175,35 +176,38 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
     LambdaLogger logger = context.getLogger();
     List<NPC> NPCs = new ArrayList<>();
     List<String> photos = new ArrayList<>(Arrays.asList(IMAGES));
-    for (int i = 0; i < request.numberOfNPCs; i++) {
+    for (int i = 0; i < request.getNumberOfNPCs(); i++) {
       NPC npc = new NPC();
-      long seed = System.nanoTime();
-      Collections.shuffle(photos, new Random(seed));
-      npc.setPhotos(photos);
+      NPC.NpcAttributes attributes = npc.new NpcAttributes();
       StringBuffer name = new StringBuffer();
       name.append(NAME_PART_ONE[rollD20()]).append(NAME_PART_TWO[rollD20()]).append(NAME_PART_THREE[rollD20()]);
-      npc.setName(properNameFormatter(name));
-      if (request.bond) {
-        int index = rollD10();
-        String bond = BONDS[index];
+      attributes.setName(properNameFormatter(name));
+      if (request.isPhotos()) {
+        long seed = System.nanoTime();
+        Collections.shuffle(photos, new Random(seed));
+        attributes.setPhotos(photos);
+      }
+      if (request.isBonds()) {
         List<String> bonds = new ArrayList<>();
+        String bond = BONDS[rollD10()];
         if (ROLL_TWICE.equals(bond)) {
           bonds.addAll(getTwoBonds());
         } else {
           bonds.add(bond);
         }
-        npc.setBonds(bonds);
+        attributes.setBonds(bonds);
       }
 
-      if (request.characteristic) {
-        npc.setCharacteristic(CHARACTERISTICS[rollD20()]);
+      if (request.isCharacteristic()) {
+        attributes.setCharacteristic(CHARACTERISTICS[rollD20()]);
       }
-      if (request.flaw) {
-        npc.setFlaw(FLAWS[rollD12()]);
+      if (request.isFlaw()) {
+        attributes.setFlaw(FLAWS[rollD12()]);
       }
-      if (request.ideal) {
-        npc.setIdeal(IDEALS[rollD20()]);
+      if (request.isIdeal()) {
+        attributes.setIdeal(IDEALS[rollD20()]);
       }
+      npc.setAttributes(attributes);
       NPCs.add(npc);
     }
     logger.log(MessageFormat.format("Generated {0} {1} {2}", NPCs.size(), (NPCs.size() == 1) ? "NPC:\n" : "NPCs:\n", NPCs.toString()));
@@ -253,13 +257,10 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
     int firstBond = (int) (Math.random() * 9);
     bonds.add(BONDS[firstBond]);
     int secondBond = (int) (Math.random() * 9);
-    while (secondBond != firstBond) {
-      bonds.add(BONDS[secondBond]);
-      if (bonds.size() == 2) {
-        break;
-      }
+    while (secondBond == firstBond) {
       secondBond = (int) (Math.random() * 9);
     }
+    bonds.add(BONDS[secondBond]);
     return bonds;
   }
 

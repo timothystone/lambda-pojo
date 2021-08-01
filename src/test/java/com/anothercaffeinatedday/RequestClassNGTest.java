@@ -1,7 +1,8 @@
 /*
+ *
  * The MIT License
  *
- * Copyright 2016 ajw121.
+ * Copyright © 2016-2021 Timothy Stone.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,22 +21,24 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ *
  */
 package com.anothercaffeinatedday;
 
-import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.fail;
+
 /**
- *
- * @author ajw121
+ * @author Timothy Stone
  */
 public class RequestClassNGTest {
-  
+
   public RequestClassNGTest() {
   }
 
@@ -144,7 +147,7 @@ public class RequestClassNGTest {
     System.out.println("isBond");
     RequestClass instance = new RequestClass();
     boolean expResult = false;
-    boolean result = instance.isBond();
+    boolean result = instance.isBonds();
     assertEquals(result, expResult);
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
@@ -158,7 +161,7 @@ public class RequestClassNGTest {
     System.out.println("setBond");
     boolean bond = false;
     RequestClass instance = new RequestClass();
-    instance.setBond(bond);
+    instance.setBonds(bond);
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
   }
@@ -189,5 +192,5 @@ public class RequestClassNGTest {
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
   }
-  
+
 }

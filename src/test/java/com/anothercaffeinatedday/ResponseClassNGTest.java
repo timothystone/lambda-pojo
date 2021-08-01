@@ -24,19 +24,20 @@
 package com.anothercaffeinatedday;
 
 import java.util.List;
-import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.fail;
+
 /**
- *
- * @author ajw121
+ * @author Timothy Stone
  */
 public class ResponseClassNGTest {
-  
+
   public ResponseClassNGTest() {
   }
 
@@ -82,5 +83,5 @@ public class ResponseClassNGTest {
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
   }
-  
+
 }

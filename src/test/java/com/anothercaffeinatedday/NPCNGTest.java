@@ -24,19 +24,23 @@
 package com.anothercaffeinatedday;
 
 import java.util.List;
-import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.fail;
+
 /**
- *
- * @author ajw121
+ * @author Timothy Stone
  */
 public class NPCNGTest {
-  
+
+  public NPC instance;
+  public NPC.NpcAttributes attributes;
+
   public NPCNGTest() {
   }
 
@@ -50,6 +54,8 @@ public class NPCNGTest {
 
   @BeforeMethod
   public void setUpMethod() throws Exception {
+    instance = new NPC();
+    attributes = instance.new NpcAttributes();
   }
 
   @AfterMethod
@@ -62,9 +68,8 @@ public class NPCNGTest {
   @Test
   public void testGetName() {
     System.out.println("getName");
-    NPC instance = new NPC();
     String expResult = "";
-    String result = instance.getName();
+    String result = attributes.getName();
     assertEquals(result, expResult);
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
@@ -77,8 +82,7 @@ public class NPCNGTest {
   public void testSetName() {
     System.out.println("setName");
     String name = "";
-    NPC instance = new NPC();
-    instance.setName(name);
+    attributes.setName(name);
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
   }
@@ -89,9 +93,8 @@ public class NPCNGTest {
   @Test
   public void testGetBonds() {
     System.out.println("getBonds");
-    NPC instance = new NPC();
-    List expResult = null;
-    List result = instance.getBonds();
+    List<String> expResult = null;
+    List<String> result = attributes.getBonds();
     assertEquals(result, expResult);
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
@@ -103,9 +106,8 @@ public class NPCNGTest {
   @Test
   public void testSetBonds() {
     System.out.println("setBonds");
-    List bonds = null;
-    NPC instance = new NPC();
-    instance.setBonds(bonds);
+    List<String> bonds = null;
+    attributes.setBonds(bonds);
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
   }
@@ -116,9 +118,8 @@ public class NPCNGTest {
   @Test
   public void testGetCharacteristic() {
     System.out.println("getCharacteristic");
-    NPC instance = new NPC();
     String expResult = "";
-    String result = instance.getCharacteristic();
+    String result = attributes.getCharacteristic();
     assertEquals(result, expResult);
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
@@ -131,8 +132,7 @@ public class NPCNGTest {
   public void testSetCharacteristic() {
     System.out.println("setCharacteristic");
     String characteristic = "";
-    NPC instance = new NPC();
-    instance.setCharacteristic(characteristic);
+    attributes.setCharacteristic(characteristic);
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
   }
@@ -143,9 +143,8 @@ public class NPCNGTest {
   @Test
   public void testGetIdeal() {
     System.out.println("getIdeal");
-    NPC instance = new NPC();
     String expResult = "";
-    String result = instance.getIdeal();
+    String result = attributes.getIdeal();
     assertEquals(result, expResult);
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
@@ -158,8 +157,7 @@ public class NPCNGTest {
   public void testSetIdeal() {
     System.out.println("setIdeal");
     String ideal = "";
-    NPC instance = new NPC();
-    instance.setIdeal(ideal);
+    attributes.setIdeal(ideal);
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
   }
@@ -170,9 +168,8 @@ public class NPCNGTest {
   @Test
   public void testGetFlaw() {
     System.out.println("getFlaw");
-    NPC instance = new NPC();
     String expResult = "";
-    String result = instance.getFlaw();
+    String result = attributes.getFlaw();
     assertEquals(result, expResult);
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
@@ -185,10 +182,9 @@ public class NPCNGTest {
   public void testSetFlaw() {
     System.out.println("setFlaw");
     String flaw = "";
-    NPC instance = new NPC();
-    instance.setFlaw(flaw);
+    attributes.setFlaw(flaw);
     // TODO review the generated test code and remove the default call to fail.
     fail("The test case is a prototype.");
   }
-  
+
 }
