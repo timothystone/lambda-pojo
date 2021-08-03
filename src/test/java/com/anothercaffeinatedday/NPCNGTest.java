@@ -23,6 +23,9 @@
  */
 package com.anothercaffeinatedday;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
 import java.util.List;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -187,4 +190,29 @@ public class NPCNGTest {
     fail("The test case is a prototype.");
   }
 
+  @Test
+  public void testToString() {
+    ObjectMapper mapper = new ObjectMapper();
+    List<String> bonds = new ArrayList<>();
+    List<String> photos = new ArrayList<>();
+    bonds.add("test");
+    bonds.add("test");
+    photos.add("photo_1.jpg");
+    photos.add("photo_2.jpg");
+
+    attributes.setBonds(bonds);
+    attributes.setPhotos(photos);
+    attributes.setFlaw("flaw");
+    attributes.setIdeal("ideal");
+    attributes.setCharacteristic("characteristic");
+    attributes.setName("name");
+    instance.setAttributes(attributes);
+    try {
+      System.out.println(mapper.writeValueAsString(instance));
+    } catch (JsonProcessingException e) {
+      e.printStackTrace();
+    }
+    fail("The test case is a prototype.");
+
+  }
 }
