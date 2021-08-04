@@ -28,6 +28,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -42,11 +43,11 @@ public class NpcGeneratorNGTest {
   }
 
   @BeforeClass
-  public static void setUpClass() throws Exception {
+  public void setUpClass() throws Exception {
   }
 
   @AfterClass
-  public static void tearDownClass() throws Exception {
+  public void tearDownClass() throws Exception {
   }
 
   @BeforeMethod
@@ -61,6 +62,7 @@ public class NpcGeneratorNGTest {
    * Test of handleRequest method, of class NpcGenerator.
    */
   @Test
+  @Ignore
   public void testHandleRequest() {
     System.out.println("handleRequest");
     RequestClass request = null;

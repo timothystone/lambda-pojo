@@ -35,7 +35,7 @@ public class NPC {
 
   private final String type;
   private final UUID id;
-  private NpcAttributes attributes;
+  private Attributes attributes;
 
   public NPC() {
     this.type = "npcs";
@@ -50,11 +50,11 @@ public class NPC {
     return id;
   }
 
-  public NpcAttributes getAttributes() {
+  public Attributes getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(NpcAttributes attributes) {
+  public void setAttributes(Attributes attributes) {
     this.attributes = attributes;
   }
 
@@ -72,7 +72,7 @@ public class NPC {
     }
   }
 
-  class NpcAttributes {
+  class Attributes {
 
     private String name;
     private List<String> photos;

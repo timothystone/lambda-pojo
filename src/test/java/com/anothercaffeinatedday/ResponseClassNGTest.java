@@ -23,6 +23,7 @@
  */
 package com.anothercaffeinatedday;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -38,19 +39,30 @@ import static org.testng.Assert.fail;
  */
 public class ResponseClassNGTest {
 
+  ResponseClass instance;
+  NPC npc;
+  List<NPC> npcs;
+
   public ResponseClassNGTest() {
   }
 
   @BeforeClass
-  public static void setUpClass() throws Exception {
+  public void setUpClass() throws Exception {
   }
 
   @AfterClass
-  public static void tearDownClass() throws Exception {
+  public void tearDownClass() throws Exception {
   }
 
   @BeforeMethod
   public void setUpMethod() throws Exception {
+    instance = new ResponseClass();
+    npc = new NPC();
+    NPC.Attributes attributes = npc.new Attributes();
+    attributes.setName("name");
+    npc.setAttributes(attributes);
+    npcs = new ArrayList<>();
+    npcs.add(npc);
   }
 
   @AfterMethod
@@ -63,12 +75,9 @@ public class ResponseClassNGTest {
   @Test
   public void testGetNPCs() {
     System.out.println("getNPCs");
-    ResponseClass instance = new ResponseClass();
-    List expResult = null;
-    List result = instance.getNPCs();
-    assertEquals(result, expResult);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    instance.setNPCs(npcs);
+    List<NPC> result = instance.getNPCs();
+    assertEquals(result, npcs);
   }
 
   /**
@@ -77,11 +86,8 @@ public class ResponseClassNGTest {
   @Test
   public void testSetNPCs() {
     System.out.println("setNPCs");
-    List NPCs = null;
-    ResponseClass instance = new ResponseClass();
-    instance.setNPCs(NPCs);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    instance.setNPCs(npcs);
+    assertEquals(instance.getNPCs().size(), 1);
   }
 
 }

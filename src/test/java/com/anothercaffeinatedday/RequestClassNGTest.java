@@ -39,19 +39,22 @@ import static org.testng.Assert.fail;
  */
 public class RequestClassNGTest {
 
+  RequestClass instance;
+
   public RequestClassNGTest() {
   }
 
   @BeforeClass
-  public static void setUpClass() throws Exception {
+  public void setUpClass() throws Exception {
   }
 
   @AfterClass
-  public static void tearDownClass() throws Exception {
+  public void tearDownClass() throws Exception {
   }
 
   @BeforeMethod
   public void setUpMethod() throws Exception {
+    instance = new RequestClass();
   }
 
   @AfterMethod
@@ -64,12 +67,10 @@ public class RequestClassNGTest {
   @Test
   public void testGetNumberOfNPCs() {
     System.out.println("getNumberOfNPCs");
-    RequestClass instance = new RequestClass();
     int expResult = 0;
+    instance.setNumberOfNPCs(0);
     int result = instance.getNumberOfNPCs();
     assertEquals(result, expResult);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -79,10 +80,8 @@ public class RequestClassNGTest {
   public void testSetNumberOfNPCs() {
     System.out.println("setNumberOfNPCs");
     int numberOfNPCs = 0;
-    RequestClass instance = new RequestClass();
     instance.setNumberOfNPCs(numberOfNPCs);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertEquals(instance.getNumberOfNPCs(), numberOfNPCs);
   }
 
   /**
@@ -91,12 +90,10 @@ public class RequestClassNGTest {
   @Test
   public void testIsCharacteristic() {
     System.out.println("isCharacteristic");
-    RequestClass instance = new RequestClass();
     boolean expResult = false;
+    instance.setCharacteristic(false);
     boolean result = instance.isCharacteristic();
     assertEquals(result, expResult);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -106,10 +103,8 @@ public class RequestClassNGTest {
   public void testSetCharacteristic() {
     System.out.println("setCharacteristic");
     boolean characteristic = false;
-    RequestClass instance = new RequestClass();
     instance.setCharacteristic(characteristic);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertEquals(instance.isCharacteristic(), characteristic);
   }
 
   /**
@@ -118,12 +113,10 @@ public class RequestClassNGTest {
   @Test
   public void testIsIdeal() {
     System.out.println("isIdeal");
-    RequestClass instance = new RequestClass();
     boolean expResult = false;
+    instance.setIdeal(false);
     boolean result = instance.isIdeal();
     assertEquals(result, expResult);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -133,37 +126,31 @@ public class RequestClassNGTest {
   public void testSetIdeal() {
     System.out.println("setIdeal");
     boolean ideal = false;
-    RequestClass instance = new RequestClass();
     instance.setIdeal(ideal);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertEquals(instance.isIdeal(), ideal);
   }
 
   /**
    * Test of isBond method, of class RequestClass.
    */
   @Test
-  public void testIsBond() {
-    System.out.println("isBond");
-    RequestClass instance = new RequestClass();
+  public void testIsBonds() {
+    System.out.println("isBonds");
     boolean expResult = false;
+    instance.setBonds(false);
     boolean result = instance.isBonds();
     assertEquals(result, expResult);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
    * Test of setBond method, of class RequestClass.
    */
   @Test
-  public void testSetBond() {
-    System.out.println("setBond");
+  public void testSetBonds() {
+    System.out.println("setBonds");
     boolean bond = false;
-    RequestClass instance = new RequestClass();
     instance.setBonds(bond);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertEquals(instance.isBonds(), bond);
   }
 
   /**
@@ -172,12 +159,10 @@ public class RequestClassNGTest {
   @Test
   public void testIsFlaw() {
     System.out.println("isFlaw");
-    RequestClass instance = new RequestClass();
     boolean expResult = false;
+    instance.setFlaw(false);
     boolean result = instance.isFlaw();
     assertEquals(result, expResult);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -187,10 +172,31 @@ public class RequestClassNGTest {
   public void testSetFlaw() {
     System.out.println("setFlaw");
     boolean flaw = false;
-    RequestClass instance = new RequestClass();
     instance.setFlaw(flaw);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertEquals(instance.isFlaw(), flaw);
+  }
+
+  /**
+   * Test of isPhotos method, of class RequestClass.
+   */
+  @Test
+  public void testIsPhotos() {
+    System.out.println("isPhotos");
+    boolean expResult = false;
+    instance.setPhotos(false);
+    boolean result = instance.isPhotos();
+    assertEquals(result, expResult);
+  }
+
+  /**
+   * Test of setPhotos method, of class RequestClass.
+   */
+  @Test
+  public void testSetPhotos() {
+    System.out.println("setPhotos");
+    boolean photos = false;
+    instance.setPhotos(false);
+    assertEquals(instance.isFlaw(), photos);
   }
 
 }

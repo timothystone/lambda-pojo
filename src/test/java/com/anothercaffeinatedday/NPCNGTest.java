@@ -42,23 +42,23 @@ import static org.testng.Assert.fail;
 public class NPCNGTest {
 
   public NPC instance;
-  public NPC.NpcAttributes attributes;
+  public NPC.Attributes attributes;
 
   public NPCNGTest() {
   }
 
   @BeforeClass
-  public static void setUpClass() throws Exception {
+  public void setUpClass() throws Exception {
   }
 
   @AfterClass
-  public static void tearDownClass() throws Exception {
+  public void tearDownClass() throws Exception {
   }
 
   @BeforeMethod
   public void setUpMethod() throws Exception {
     instance = new NPC();
-    attributes = instance.new NpcAttributes();
+    attributes = instance.new Attributes();
   }
 
   @AfterMethod
@@ -71,11 +71,10 @@ public class NPCNGTest {
   @Test
   public void testGetName() {
     System.out.println("getName");
-    String expResult = "";
+    String expResult = "name";
+    attributes.setName("name");
     String result = attributes.getName();
     assertEquals(result, expResult);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -86,8 +85,7 @@ public class NPCNGTest {
     System.out.println("setName");
     String name = "";
     attributes.setName(name);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertEquals(attributes.getName(), name);
   }
 
   /**
@@ -96,11 +94,12 @@ public class NPCNGTest {
   @Test
   public void testGetBonds() {
     System.out.println("getBonds");
-    List<String> expResult = null;
+    List<String> expResult = new ArrayList<>();
+    expResult.add("bond");
+    expResult.add("bond");
+    attributes.setBonds(expResult);
     List<String> result = attributes.getBonds();
-    assertEquals(result, expResult);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertEquals(result.size(), expResult.size());
   }
 
   /**
@@ -109,23 +108,43 @@ public class NPCNGTest {
   @Test
   public void testSetBonds() {
     System.out.println("setBonds");
-    List<String> bonds = null;
+    List<String> bonds = new ArrayList<>();
+    bonds.add("bond");
+    bonds.add("bond");
     attributes.setBonds(bonds);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertEquals(attributes.getBonds().size(), 2);
   }
 
+  @Test
+  public void testGetPhotos() {
+    System.out.println("getBonds");
+    List<String> expResult = new ArrayList<>();
+    expResult.add("photo");
+    expResult.add("photo");
+    attributes.setPhotos(expResult);
+    assertEquals(attributes.getPhotos().size(), 2);
+
+  }
+
+  @Test
+  public void testSetPhotos() {
+    System.out.println("setPhotos");
+    List<String> photos = new ArrayList<>();
+    photos.add("photo");
+    photos.add("photo");
+    attributes.setPhotos(photos);
+    assertEquals(attributes.getPhotos().size(), 2);
+  }
   /**
    * Test of getCharacteristic method, of class NPC.
    */
   @Test
   public void testGetCharacteristic() {
     System.out.println("getCharacteristic");
-    String expResult = "";
+    String expResult = "characteristic";
+    attributes.setCharacteristic(expResult);
     String result = attributes.getCharacteristic();
     assertEquals(result, expResult);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -134,10 +153,9 @@ public class NPCNGTest {
   @Test
   public void testSetCharacteristic() {
     System.out.println("setCharacteristic");
-    String characteristic = "";
+    String characteristic = "characteristic";
     attributes.setCharacteristic(characteristic);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertEquals(attributes.getCharacteristic(), characteristic);
   }
 
   /**
@@ -146,11 +164,10 @@ public class NPCNGTest {
   @Test
   public void testGetIdeal() {
     System.out.println("getIdeal");
-    String expResult = "";
+    String expResult = "ideal";
+    attributes.setIdeal(expResult);
     String result = attributes.getIdeal();
     assertEquals(result, expResult);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -159,10 +176,9 @@ public class NPCNGTest {
   @Test
   public void testSetIdeal() {
     System.out.println("setIdeal");
-    String ideal = "";
+    String ideal = "ideal";
     attributes.setIdeal(ideal);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertEquals(attributes.getIdeal(), ideal);
   }
 
   /**
@@ -171,11 +187,10 @@ public class NPCNGTest {
   @Test
   public void testGetFlaw() {
     System.out.println("getFlaw");
-    String expResult = "";
+    String expResult = "flaw";
+    attributes.setFlaw(expResult);
     String result = attributes.getFlaw();
     assertEquals(result, expResult);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -184,35 +199,8 @@ public class NPCNGTest {
   @Test
   public void testSetFlaw() {
     System.out.println("setFlaw");
-    String flaw = "";
+    String flaw = "flaw";
     attributes.setFlaw(flaw);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
-  }
-
-  @Test
-  public void testToString() {
-    ObjectMapper mapper = new ObjectMapper();
-    List<String> bonds = new ArrayList<>();
-    List<String> photos = new ArrayList<>();
-    bonds.add("test");
-    bonds.add("test");
-    photos.add("photo_1.jpg");
-    photos.add("photo_2.jpg");
-
-    attributes.setBonds(bonds);
-    attributes.setPhotos(photos);
-    attributes.setFlaw("flaw");
-    attributes.setIdeal("ideal");
-    attributes.setCharacteristic("characteristic");
-    attributes.setName("name");
-    instance.setAttributes(attributes);
-    try {
-      System.out.println(mapper.writeValueAsString(instance));
-    } catch (JsonProcessingException e) {
-      e.printStackTrace();
-    }
-    fail("The test case is a prototype.");
-
+    assertEquals(attributes.getFlaw(), flaw);
   }
 }

@@ -178,7 +178,7 @@ public class NpcGenerator implements RequestHandler<RequestClass, ResponseClass>
     List<String> photos = new ArrayList<>(Arrays.asList(IMAGES));
     for (int i = 0; i < request.getNumberOfNPCs(); i++) {
       NPC npc = new NPC();
-      NPC.NpcAttributes attributes = npc.new NpcAttributes();
+      NPC.Attributes attributes = npc.new Attributes();
       StringBuffer name = new StringBuffer();
       name.append(NAME_PART_ONE[rollD20()]).append(NAME_PART_TWO[rollD20()]).append(NAME_PART_THREE[rollD20()]);
       attributes.setName(properNameFormatter(name));

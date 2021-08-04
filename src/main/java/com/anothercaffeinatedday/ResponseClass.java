@@ -31,15 +31,15 @@ import java.util.List;
  */
 public class ResponseClass {
 
-  List NPCs;
+  List<NPC> data;
 
   /**
    * Makes a new response with a list of NPCs.
    *
    * @param NPCs the list of NPCs for the response
    */
-  public ResponseClass(List NPCs) {
-    this.NPCs = NPCs;
+  public ResponseClass(List<NPC> NPCs) {
+    this.data = NPCs;
   }
 
   /**
@@ -53,8 +53,8 @@ public class ResponseClass {
    *
    * @return List NPCs generated
    */
-  public List getNPCs() {
-    return this.NPCs;
+  public List<NPC> getNPCs() {
+    return this.data;
   }
 
   /**
@@ -62,8 +62,8 @@ public class ResponseClass {
    *
    * @param NPCs the NPCs generated from the request
    */
-  public void setNPCs(List NPCs) {
-    this.NPCs = NPCs;
+  public void setNPCs(List<NPC> NPCs) {
+    this.data = NPCs;
   }
 
 }
