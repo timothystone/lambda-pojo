@@ -21,6 +21,7 @@ paths:
       - $ref: '#/components/parameters/Flaw'
       - $ref: '#/components/parameters/Characteristic'
       - $ref: '#/components/parameters/Ideal'
+      - $ref: '#/components/parameters/Photos'
     get:
       responses:
         '200':
@@ -64,6 +65,13 @@ components:
       name: flaw
       in: query
       description: Generate a flaw of the NPC.
+      schema:
+        type: boolean
+      example: true
+    Photos:
+      name: photos
+      in: query
+      description: Generate a set of photo filenames for the NPC.
       schema:
         type: boolean
       example: true
