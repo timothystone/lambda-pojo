@@ -9,7 +9,7 @@ info:
     An API for generating a random Non-Player Character (NPC) for the "world's most popular Role Playing Game."
   contact:
     name: Timothy Stone
-    url: https://www.anothercaffeinatedday.com
+    url: https://www.github.com/timothystone/
     email: javafueled@gmail.com
 servers:
   - url: https://gvk9jsvdt5.execute-api.us-east-1.amazonaws.com/prod
