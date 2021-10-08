@@ -1,5 +1,8 @@
-AWS SDK for Java Sample
------------------------
+5e Non-Player Character Name Generator
+======================================
+
+An AWS Java Lambda Exercise
+---------------------------
 
 This sample demonstrates how to make basic requests to AWS services using the AWS SDK for Java.
 
